@@ -2,12 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+	  <IsPackable>false</IsPackable>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LightBDD.MsTest3" Version="3.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
     <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StrangeAndUselessSort\StrangeAndUselessSort.csproj" />
   </ItemGroup>
 
   <ItemGroup>
