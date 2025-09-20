@@ -1,0 +1,38 @@
+name: Build and Test .NET Solution
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Restore dependencies
+        run: dotnet restore src/csharp/StrangeAndUselessSort.sln
+      - name: Build solution
+        run: dotnet build src/csharp/StrangeAndUselessSort.sln --configuration Debug --no-restore
+      - name: Run tests
+        run: dotnet test src/csharp/StrangeAndUselessSort.sln --no-build --verbosity normal
+      - name: Upload LightBDD HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: LightBDD-HTML-Report
+          path: src/csharp/SAUS.Tests/**/Reports/*.html
