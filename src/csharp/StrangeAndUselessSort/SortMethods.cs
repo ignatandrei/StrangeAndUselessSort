@@ -26,4 +26,20 @@ public class SortMethods
         }
         return result.ToArray();
     }
+
+    /// <summary>
+    /// StalinSortWithOperators for types implementing IComparisonOperators. Uses >= operator for comparison.
+    /// </summary>
+    public static T[] StalinSortWithOperators<T>(T[] input) where T : System.Numerics.IComparisonOperators<T, T, bool>
+    {
+        if (input == null || input.Length == 0)
+            return Array.Empty<T>();
+        var result = new List<T> { input[0] };
+        for (int i = 1; i < input.Length; i++)
+        {
+            if (input[i] >= result[^1])
+                result.Add(input[i]);
+        }
+        return result.ToArray();
+    }
 }
