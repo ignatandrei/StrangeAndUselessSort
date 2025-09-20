@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrangeAndUselessSort", "St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAUS.Tests", "SAUS.Tests\SAUS.Tests.csproj", "{56540F58-EBDB-48D1-A717-0BE057581760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightBDDTests1", "LightBDDTests1\LightBDDTests1.csproj", "{61B24B6E-B14E-452B-ACCD-373DA92FCF5F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{56540F58-EBDB-48D1-A717-0BE057581760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56540F58-EBDB-48D1-A717-0BE057581760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56540F58-EBDB-48D1-A717-0BE057581760}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61B24B6E-B14E-452B-ACCD-373DA92FCF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61B24B6E-B14E-452B-ACCD-373DA92FCF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61B24B6E-B14E-452B-ACCD-373DA92FCF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61B24B6E-B14E-452B-ACCD-373DA92FCF5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

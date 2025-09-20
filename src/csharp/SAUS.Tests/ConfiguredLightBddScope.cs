@@ -1,6 +1,4 @@
-﻿using LightBDD.TUnit;
-using SAUS.Tests;
-[assembly: ConfiguredLightBddScope]
+﻿[assembly: ConfiguredLightBddScope]
 namespace SAUS.Tests;
 internal class ConfiguredLightBddScopeAttribute : LightBddScopeAttribute
 {
