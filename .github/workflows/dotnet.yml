@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: LightBDD-HTML-Report
-          path: src/csharp/SAUS.Tests/bin/Debug/net9.0/Reports/*.html
+          path: src/csharp/SAUS.Tests/**/Reports/*.html
