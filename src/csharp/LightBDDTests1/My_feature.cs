@@ -1,10 +1,13 @@
-﻿namespace SAUS.Tests;
+﻿using LightBDD.Framework;
+using LightBDD.Framework.Scenarios;
+using LightBDD.TUnit;
+
+namespace LightBDDTests1;
 [Label("FEAT-1")]
 [FeatureDescription(
 @"In order to 
 As a
 I want to ")]
-[TestClass]
 public partial class My_feature
 {
     [Label("SCENARIO-1")]

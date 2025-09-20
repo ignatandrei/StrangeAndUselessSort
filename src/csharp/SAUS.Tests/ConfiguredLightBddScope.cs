@@ -1,27 +1,12 @@
-﻿[assembly: Parallelize(Scope = ExecutionScope.MethodLevel)]
-
+﻿using LightBDD.TUnit;
+using SAUS.Tests;
+[assembly: ConfiguredLightBddScope]
 namespace SAUS.Tests;
-[TestClass]
-public class ConfiguredLightBddScope
+internal class ConfiguredLightBddScopeAttribute : LightBddScopeAttribute
 {
-    [AssemblyInitialize]
-    public static void Setup(TestContext testContext)
+    protected override void OnConfigure(LightBddConfiguration configuration)
     {
-        LightBddScope.Initialize(OnConfigure);
-
-        // code executed before any scenarios
-    }
-
-    [AssemblyCleanup]
-    public static void Cleanup()
-    {
-        LightBddScope.Cleanup();
-
-        // code executed after all scenarios
-    }
-
-    private static void OnConfigure(LightBddConfiguration configuration)
-    {
+        // LightBDD configuration
         configuration
             .ReportWritersConfiguration()
             .AddFileWriter<HtmlReportFormatter>(@"~\Reports\SAUS.html");
