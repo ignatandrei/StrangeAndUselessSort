@@ -42,4 +42,31 @@ public class SortMethods
         }
         return result.ToArray();
     }
+
+    /// <summary>
+    /// ThanosSort: Eliminates the second half of the array until the array is sorted or empty.
+    /// Always keeps the first half in each iteration.
+    /// </summary>
+    public static T[] ThanosSort<T>(T[] input) where T : IComparable<T>
+    {
+        if (input == null || input.Length == 0)
+            return Array.Empty<T>();
+        var arr = input.ToArray();
+        while (!IsSorted(arr) && arr.Length > 0)
+        {
+            int half = arr.Length / 2;
+            arr = arr.Take(half).ToArray();
+        }
+        return arr;
+    }
+
+    private static bool IsSorted<T>(T[] arr) where T : IComparable<T>
+    {
+        for (int i = 1; i < arr.Length; i++)
+        {
+            if (arr[i - 1].CompareTo(arr[i]) > 0)
+                return false;
+        }
+        return true;
+    }
 }
