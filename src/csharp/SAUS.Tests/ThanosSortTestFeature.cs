@@ -48,7 +48,7 @@ public partial class ThanosSortTestFeature
             _ => Then_the_result_should_be(1,2)
         );
     }
-    [Label("SCENARIO-THANOS-4")]
+    [Label("SCENARIO-THANOS-5")]
     [Scenario]
     public async Task ThanosSort_More_Test_Odd()
     {
