@@ -60,11 +60,38 @@ public class SortMethods
         return arr;
     }
 
+    /// <summary>
+    /// ThanosSortWithOperators: Same behavior as ThanosSort but relies on generic math operators.
+    /// Eliminates the second half of the array until the array is sorted or empty.
+    /// </summary>
+    public static T[] ThanosSortWithOperators<T>(T[] input) where T : System.Numerics.IComparisonOperators<T, T, bool>
+    {
+        if (input == null || input.Length == 0)
+            return Array.Empty<T>();
+        var arr = input.ToArray();
+        while (!IsSortedOps(arr) && arr.Length > 0)
+        {
+            int half = arr.Length / 2;
+            arr = arr.Take(half).ToArray();
+        }
+        return arr;
+    }
+
     private static bool IsSorted<T>(T[] arr) where T : IComparable<T>
     {
         for (int i = 1; i < arr.Length; i++)
         {
             if (arr[i - 1].CompareTo(arr[i]) > 0)
+                return false;
+        }
+        return true;
+    }
+
+    private static bool IsSortedOps<T>(T[] arr) where T : System.Numerics.IComparisonOperators<T, T, bool>
+    {
+        for (int i = 1; i < arr.Length; i++)
+        {
+            if (arr[i - 1] > arr[i])
                 return false;
         }
         return true;
