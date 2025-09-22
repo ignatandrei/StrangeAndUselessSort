@@ -87,8 +87,34 @@ public class SortMethods
             return Array.Empty<T>();
         var arr = input.ToArray();
         var rng = new Random();
-        int attempts = 0;
+        //int attempts = 0;
         while (!IsSorted(arr))
+        {
+            // Fisher-Yates shuffle
+            for (int i = arr.Length - 1; i > 0; i--)
+            {
+                int j = rng.Next(i + 1);
+                (arr[i], arr[j]) = (arr[j], arr[i]);
+            }
+            //attempts++;
+            // Optional: Prevent infinite loop for huge arrays
+            //if (attempts > 1000000) break;
+        }
+        return arr;
+    }
+
+    /// <summary>
+    /// MonkeySortWithOperators: Randomly shuffles the array until it is sorted using IComparisonOperators (>=).
+    /// Returns the sorted array.
+    /// </summary>
+    public static T[] MonkeySortWithOperators<T>(T[] input) where T : System.Numerics.IComparisonOperators<T, T, bool>
+    {
+        if (input == null || input.Length == 0)
+            return Array.Empty<T>();
+        var arr = input.ToArray();
+        var rng = new Random();
+        int attempts = 0;
+        while (!IsSortedOps(arr))
         {
             // Fisher-Yates shuffle
             for (int i = arr.Length - 1; i > 0; i--)
