@@ -79,6 +79,8 @@ public class SortMethods
 
     private static bool IsSorted<T>(T[] arr) where T : IComparable<T>
     {
+        if (arr is null) return true;
+        if (arr.Length < 2) return true;
         for (int i = 1; i < arr.Length; i++)
         {
             if (arr[i - 1].CompareTo(arr[i]) > 0)
@@ -89,6 +91,8 @@ public class SortMethods
 
     private static bool IsSortedOps<T>(T[] arr) where T : System.Numerics.IComparisonOperators<T, T, bool>
     {
+        if(arr is null) return true;
+        if (arr.Length < 2) return true;
         for (int i = 1; i < arr.Length; i++)
         {
             if (arr[i - 1] > arr[i])

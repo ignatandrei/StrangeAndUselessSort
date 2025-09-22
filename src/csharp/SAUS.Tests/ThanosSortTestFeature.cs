@@ -3,7 +3,7 @@ namespace SAUS.Tests;
 [FeatureDescription(
 @"In order to ensure that the ThanosSort algorithm behaves as expected,
 As a developer,
-I want to verify that calling ThanosSort on an array randomly eliminates elements until the array is sorted")]
+I want to verify that calling ThanosSort on an array array deterministically eliminates elements (e.g., keeps the first half and discards the second half) until the array is sorted")]
 public partial class ThanosSortTestFeature
 {
     [Label("SCENARIO-THANOS-1")]
