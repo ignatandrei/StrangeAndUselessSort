@@ -77,6 +77,32 @@ public class SortMethods
         return arr;
     }
 
+    /// <summary>
+    /// MonkeySort: Randomly shuffles the array until it is sorted.
+    /// Returns the sorted array.
+    /// </summary>
+    public static T[] MonkeySort<T>(T[] input) where T : IComparable<T>
+    {
+        if (input == null || input.Length == 0)
+            return Array.Empty<T>();
+        var arr = input.ToArray();
+        var rng = new Random();
+        int attempts = 0;
+        while (!IsSorted(arr))
+        {
+            // Fisher-Yates shuffle
+            for (int i = arr.Length - 1; i > 0; i--)
+            {
+                int j = rng.Next(i + 1);
+                (arr[i], arr[j]) = (arr[j], arr[i]);
+            }
+            attempts++;
+            // Optional: Prevent infinite loop for huge arrays
+            //if (attempts > 1000000) break;
+        }
+        return arr;
+    }
+
     private static bool IsSorted<T>(T[] arr) where T : IComparable<T>
     {
         if (arr is null) return true;
