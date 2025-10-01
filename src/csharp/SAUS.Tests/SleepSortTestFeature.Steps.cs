@@ -1,0 +1,31 @@
+namespace SAUS.Tests;
+public partial class SleepSortTestFeature : FeatureFixture
+{
+    private int[]? inputArray;
+    private int[]? resultArray;
+
+    private async Task Given_an_array_with_values(params int[] values)
+    {
+        await Task.Yield();
+        inputArray = values;
+    }
+
+    private async Task When_SleepSortWithISignedNumber_is_called()
+    {
+        resultArray = await StrangeAndUselessSort.SortMethods.SleepSortWithISignedNumber(inputArray!);
+    }
+
+    private async Task Then_the_result_should_be(params int[] expected)
+    {
+        await Assert.That(resultArray).IsNotNull();
+        // Compare both arrays for sorted content and length
+        await Assert.That(resultArray!.Length).IsEqualTo(expected.Length);
+        await Assert.That(resultArray!.SequenceEqual(expected)).IsTrue();
+    }
+
+    private async Task Then_the_result_should_be_empty()
+    {
+        await Assert.That(resultArray).IsNotNull();
+        await Assert.That(resultArray!.Length).IsEqualTo(0);
+    }
+}
