@@ -129,6 +129,33 @@ public class SortMethods
         return arr;
     }
 
+    /// <summary>
+    /// SleepSortWithISignedNumber: Sorts by sleeping for each value's number of seconds, then collecting in order.
+    /// Only for demonstration; very slow for large values.
+    /// </summary>
+    public static async Task<T[]> SleepSortWithISignedNumber<T>(T[] input) where T : System.Numerics.ISignedNumber<T>
+    {
+        if (input == null || input.Length == 0)
+            return Array.Empty<T>();
+        var results = new List<T>();
+        var tasks = new List<Task>(input.Length+1);
+        var locker = new object();
+        foreach (var value in input)
+        {
+            int seconds = Convert.ToInt32(value);
+            if (seconds < 0) seconds = 0;
+            tasks.Add(Task.Run(async () => {
+                await Task.Delay(seconds * 1000);
+                lock (locker)
+                {
+                    results.Add(value);
+                }
+            }));
+        }
+        await Task.WhenAll(tasks);
+        return results.ToArray();
+    }
+
     private static bool IsSorted<T>(T[] arr) where T : IComparable<T>
     {
         if (arr is null) return true;
