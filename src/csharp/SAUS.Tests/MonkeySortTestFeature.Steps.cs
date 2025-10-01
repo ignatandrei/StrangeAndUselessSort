@@ -1,5 +1,5 @@
 namespace SAUS.Tests;
-public partial class StalinSortWithOperatorsTestFeature : FeatureFixture
+public partial class MonkeySortTestFeature : FeatureFixture
 {
     private int[]? inputArray;
     private int[]? resultArray;
@@ -10,15 +10,17 @@ public partial class StalinSortWithOperatorsTestFeature : FeatureFixture
         inputArray = values;
     }
 
-    private async Task When_StalinSortWithOperators_is_called()
+    private async Task When_MonkeySort_is_called()
     {
         await Task.Yield();
-        resultArray = StrangeAndUselessSort.SortMethods.StalinSortWithOperators(inputArray!);
+        resultArray = StrangeAndUselessSort.SortMethods.MonkeySort(inputArray!);
     }
 
-    private async Task Then_the_result_should_be(int[] expected)
+    private async Task Then_the_result_should_be(params int[] expected)
     {
         await Assert.That(resultArray).IsNotNull();
+        // Compare both arrays for sorted content and length
+        await Assert.That(resultArray!.Length).IsEqualTo(expected.Length);
         await Assert.That(resultArray!.SequenceEqual(expected)).IsTrue();
 
     }
