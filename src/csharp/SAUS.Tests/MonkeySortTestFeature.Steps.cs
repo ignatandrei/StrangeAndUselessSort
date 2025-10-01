@@ -20,8 +20,9 @@ public partial class MonkeySortTestFeature : FeatureFixture
     {
         await Assert.That(resultArray).IsNotNull();
         // Compare both arrays for sorted content and length
-        await Assert.That(resultArray!.OrderBy(x => x).ToArray()).IsEquivalentTo(expected.OrderBy(x => x).ToArray());
         await Assert.That(resultArray!.Length).IsEqualTo(expected.Length);
+        await Assert.That(resultArray!.SequenceEqual(expected)).IsTrue();
+
     }
 
     private async Task Then_the_result_should_be_empty()

@@ -19,7 +19,8 @@ public partial class StalinSortWithOperatorsTestFeature : FeatureFixture
     private async Task Then_the_result_should_be(int[] expected)
     {
         await Assert.That(resultArray).IsNotNull();
-        await Assert.That(resultArray).IsEquivalentTo(expected);
+        await Assert.That(resultArray!.SequenceEqual(expected)).IsTrue();
+
     }
 
     private async Task Then_the_result_should_be_empty()
